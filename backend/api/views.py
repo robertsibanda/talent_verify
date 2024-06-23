@@ -11,12 +11,21 @@ def login(request, *args, **kwargs):
     """
     get token through login
     """
-    username = request.data['username']
-    user = get_object_or_404(User, username=username)
-    if user.check_password(request.data['password']):
+    try:
+        # for react frontend
+        userdata = request.data['body']
+        username = userdata['username']
+        password = userdata['password']
+
+        user = get_object_or_404(User, username=username)
+        if not user.check_password(password):
+            return Response({"error": "user not found"})
+
         token, created = Token.objects.get_or_create(user=user)
-        return Response({'token': token.key})
-    return Response({'error': 'Invalid credentials'})
+        return Response({"token": token.key})
+    except KeyError:
+        print(request.data['body']['username'])
+        return Response({"error": "missing request data"})
 
 
 @api_view(['POST'])

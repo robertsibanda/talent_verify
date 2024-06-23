@@ -9,7 +9,7 @@ urlpatterns = [
     path('signup/', auth_views.signup),
 
     # employee views
-    path('employee/', e_views.employee_list_create),
+    path('employees/', e_views.employee_list_create),
     path('employee/<int:pk>/', e_views.employee_detail_view),
 
     # employee role views

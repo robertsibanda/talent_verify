@@ -1,6 +1,7 @@
 from django.db import models
 
 
+
 class Company(models.Model):
     name = models.CharField(max_length=255)
     registration_date = models.DateField()
@@ -10,6 +11,11 @@ class Company(models.Model):
     number_of_employees = models.IntegerField()
     phone = models.CharField(max_length=20)
     email = models.EmailField()
+
+    @property
+    def department_count(self):
+        return Department.objects.filter(company=self.id).count()
+
 
 
 class Department(models.Model):

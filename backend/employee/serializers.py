@@ -6,7 +6,16 @@ from .models import EmployeeRole
 class EmployeeSerializer(serializers.ModelSerializer):
     class Meta:
         model = Employee
-        fields = '__all__'
+        fields = [
+            'id',
+            'name',
+            'employee_id',
+            'email',
+            'phone',
+            'role',
+            'department',
+            'company'
+        ]
 
 
 class EmployeeRoleSerializer(serializers.ModelSerializer):

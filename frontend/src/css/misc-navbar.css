@@ -1,0 +1,22 @@
+.navbar-nav {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-self: center;
+    align-content: center;
+    margin: 1rem 0.5em;
+    border-radius: 10px;
+    min-width: 20em;
+}
+
+
+.nav-item {
+    text-decoration: none;
+    padding: 0.4em;
+    color: #f5f6f7;
+    font-weight: bold;
+    font-size: 1.2em;
+    border-bottom: #f68657 3px solid;
+    border-top: #f68657 3px solid;
+
+}

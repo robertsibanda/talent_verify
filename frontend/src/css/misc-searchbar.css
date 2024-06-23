@@ -1,0 +1,41 @@
+.text-search {
+    border: none;
+    min-height: 0.1em;
+    max-height: 0.8em;
+    margin: 0.5em;
+    padding: 1em;
+    border-radius: 6px;
+    background-color: #f5f6f7;
+}
+
+.searchbar {
+    display: flex;
+    flex-direction: column;
+}
+
+.search-header {
+    display: flex;
+    align-self: center;
+}
+
+@media (max-width: 400px) {
+    .search-header h3 {
+        visibility: hidden;
+    }
+
+    .search-header h3 img {
+        visibility: visible;
+    }
+    
+}
+
+.add-btn {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.add-btn img {
+    max-width: 1.5em;
+}
+
