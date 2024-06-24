@@ -22,7 +22,6 @@ const EmployeeList = (props) => {
             }
         )
             .then(response => {
-                console.log(response.data)
                 setEmployees(response.data)
             })
             .catch(err => {
@@ -33,32 +32,65 @@ const EmployeeList = (props) => {
     useEffect(() => {
         getList()
             .then(() => {
-                console.log('downloaded employee list')
             })
     }, [])
 
     const handleSearch = (props) => {
 
-        if (props.employee === "" || null || undefined) {
-            getList()
-                .then(r => {
-                    console.log('reloaded employee data')
+        getList().then(() => {
+            let found  = []
+
+
+            let requiredProps = []
+
+            Object.keys(props).forEach((prop) => {
+                if (props[prop] !== null || undefined){
+                    requiredProps.push(prop)
+                }
+
+            })
+
+
+            employees.forEach(emp => {
+                requiredProps.forEach(prop => {
+                    if (emp[prop] !== undefined || null) {
+                        if (emp[prop].includes(props[prop])) {
+                            console.log(`Props emp[prop]: ${emp.name}  -> ${emp[prop]} == ${props[prop]}`)
+                            if (found.indexOf(emp) === -1) {
+                                console.log(`Adding ${emp.name} for ${prop}`)
+                                found.push(emp)
+                            }
+                        }
+                        
+                    }
                 })
-        }
+            })
 
-        let foundEmployees = employees.filter(emp => {
-            console.log('employee name ', emp.name)
+            employees.forEach(emp => {
+                requiredProps.forEach(prop => {
+                    if (emp[prop] !== undefined || null) {
+                        if (!emp[prop].includes(props[prop])) {
+                            console.log(`Removing ${emp.name} for ${prop}`)
+                            found.filter(em => {
+                                if (em !== emp) {
+                                    return em
+                                }
+                                console.log('Found : ', found)
 
-            if (emp['name'].includes(props.employeeName)) {
-                //console.log(emp.name , ' found')
-                return emp
-            }
-            else {
-                // console.log(`${emp.name} includes ${props.employeeName} is ${emp['name'].includes(props.employeeName)}`)
-            }
+                                return null
+                            })
+                            console.log(found, employees)
+                        }
+                        
+                    }
+                })
+            })
+
+            
+            setEmployees(found)
+
+
         })
-
-        setEmployees(foundEmployees)
     }
 
 

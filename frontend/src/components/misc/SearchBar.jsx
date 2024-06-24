@@ -3,16 +3,16 @@ import "../../css/misc-searchbar.css"
 
 const SearchBar = ({ handleSearch }) => {
     const [inputs, setInputs] = useState({
-        company: '',
-        employee: '',
-        position: '',
-        started: '',
-        ended: ''
+        company: null,
+        name: null,
+        role: null,
+        started: null,
+        ended: null
     });
+
 
     useEffect(() => {
         // This code runs whenever any input state changes
-        console.log('Input states updated:', inputs);
         handleSearch(inputs)
         // Add your additional logic here
     }, [inputs]);
@@ -33,8 +33,8 @@ const SearchBar = ({ handleSearch }) => {
             <div className={"searchbar"}>
                 <div className={"search-header"}>
                     <input type={"text"}
-                           name={"employee"}
-                           value={inputs.employee}
+                           name={"name"}
+                           value={inputs.name}
                            className={"text-search"}
                            placeholder={"employee name"}
                            onChange={handleInput}/>
@@ -48,19 +48,19 @@ const SearchBar = ({ handleSearch }) => {
                            onChange={handleInput}/>
                     <input type={"text"}
                            className={"text-search"}
-                           name={"position"}
-                           value={inputs.position}
+                           name={"role"}
+                           value={inputs.role}
                            placeholder={"position"}
                            onChange={handleInput}/>
                     <input type={"text"}
                            className={"text-search"}
-                           placeholder={"year started"}
+                           placeholder={"year started YYYY-MM-DD"}
                            name={"started"}
                            value={inputs.started}
                            onChange={handleInput}/>
                     <input type={"text"}
                            className={"text-search"}
-                           placeholder={"year left"}
+                           placeholder={"year left YYYY-MM-DD"}
                            name={"ended"}
                            value={inputs.ended}
                            onChange={handleInput}/>

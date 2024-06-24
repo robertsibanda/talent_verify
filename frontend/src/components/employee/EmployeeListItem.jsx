@@ -6,12 +6,6 @@ import {Link} from "react-router-dom";
 
 const EmployeeListItem = ( { employee } ) => {
 
-    console.log(`Employee ${employee}`)
-
-    const handleClick = () => {
-        console.log('Clicked ')
-    }
-    
     return (<div className={"employee-item"}>
         <div>
             <h3>{employee.name}</h3>
@@ -24,7 +18,7 @@ const EmployeeListItem = ( { employee } ) => {
         <div>
             <center>
                 <Link to={`/employee/${employee.id}`}>
-                    <button className={"view-employee-btn"} onClick={handleClick}>
+                    <button className={"view-employee-btn"} >
                         View Employee
                     </button>
                 </Link>

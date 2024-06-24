@@ -44,7 +44,7 @@ class EmployeeRoleListCreate(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
-        return self.queryset.filter(employee=self.kwargs['emp'])
+        return self.queryset.filter(employee=self.kwargs['emp']).order_by('start_date').reverse()
 
 
 employee_role_list_create = EmployeeRoleListCreate.as_view()

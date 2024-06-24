@@ -12,6 +12,18 @@ class Employee(models.Model):
         return EmployeeRole.objects.filter(employee=self.id).order_by('start_date').last().role
 
     @property
+    def started(self):
+        return EmployeeRole.objects.filter(employee=self.id).order_by('start_date').last().start_date
+    
+
+    @property
+    def ended(self):
+        end_date =  EmployeeRole.objects.filter(employee=self.id).order_by('start_date').last().end_date
+        if end_date == None:
+            end_date = "Current"
+        return end_date
+
+    @property
     def department(self):
         employee_role = EmployeeRole.objects.filter(employee=self.id).order_by('end_date').last()
         return Department.objects.get(employeerole=employee_role).name

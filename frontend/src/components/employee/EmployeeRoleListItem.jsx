@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Link} from "react-router-dom";
-import image from "../../images/delete.png"
+import "../../css/emp-employeelist.css"
 
 const EmployeeRoleListItem = ({role, handleDelete}) => {
 
@@ -23,22 +22,18 @@ const EmployeeRoleListItem = ({role, handleDelete}) => {
                 <h4 className={"label"}>Position :</h4>
                 <h4 className={"content"}>{role.role}</h4>
             </div>
-
             <div className={"role-item"}>
                 <h4 className={"label"}>Company : </h4>
                 <h4 className={"content"}>{role.company}</h4>
             </div>
-
             <div className={"role-item"}>
                 <h4 className={"label"}>Department : </h4>
                 <h4 className={"content"}>{role.get_department}</h4>
             </div>
-
             <div className={"role-item"}>
                 <h4 className={"label"}>Duties :</h4>
                 <h4 className={"content"}>{role.duties}</h4>
             </div>
-
             <h4>{role.start_date}</h4> 
             <h4>to</h4>
             <h4>{role.end_date || 'current'}</h4> 

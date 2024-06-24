@@ -11,6 +11,8 @@ class EmployeeSerializer(serializers.ModelSerializer):
             'name',
             'employee_id',
             'role',
+            'started',
+            'ended',
             'department',
             'company'
         ]
