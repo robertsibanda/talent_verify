@@ -1,44 +1,30 @@
-import React, { useState } from 'react';
-import {Link} from "react-router-dom";
+import React, { useEffect, useState } from 'react';
 import "../../css/misc-searchbar.css"
-import add from "../../images/add.jpg"
 
 const SearchBar = ({ handleSearch }) => {
+    const [inputs, setInputs] = useState({
+        company: '',
+        employee: '',
+        position: '',
+        started: '',
+        ended: ''
+    });
 
-    const [employeeName, setEmployeeName] = useState("")
-    const [company, setCompany] = useState("")
-    const [position, setPosition] = useState("")
-    const [yearStarted, setStarted] = useState("")
-    const [yeaEnded, setEnded] = useState("")
+    useEffect(() => {
+        // This code runs whenever any input state changes
+        console.log('Input states updated:', inputs);
+        handleSearch(inputs)
+        // Add your additional logic here
+    }, [inputs]);
 
-    const setChanged = (content, type) => {
-        if (type === 'name') {
-            setEmployeeName(content)
-        }
-        if (type === 'company') {
-            setCompany(content)
-        }
-        if (type === 'position') {
-            setPosition(content)
-        }
-        if (type === 'started') {
-            setStarted(content)
-        }
+    const handleInput = (e) => {
+        const { name, value } = e.target;
+        setInputs(prevInputs => ({
+            ...prevInputs,
+            [name]: value
+        }));
 
-        if (type === 'ended') {
-            setEnded(content)
-        }
-
-        const props = {
-            employeeName,
-             company, 
-             position, 
-             yeaEnded, 
-             yearStarted
-        }
-
-        handleSearch(props)
-    }
+    };
 
     return(
         <center>
@@ -47,27 +33,37 @@ const SearchBar = ({ handleSearch }) => {
             <div className={"searchbar"}>
                 <div className={"search-header"}>
                     <input type={"text"}
+                           name={"employee"}
+                           value={inputs.employee}
                            className={"text-search"}
                            placeholder={"employee name"}
-                           onChange={e => setChanged(e.target.value, 'name')}/>
+                           onChange={handleInput}/>
                 </div>
                 <div className={"search-filters"}>
                     <input type={"text"}
                            className={"text-search"}
                            placeholder={"company"}
-                           onChange={e => setChanged(e.target.value, 'company')}/>
+                           name={"company"}
+                           value={inputs.company}
+                           onChange={handleInput}/>
                     <input type={"text"}
                            className={"text-search"}
+                           name={"position"}
+                           value={inputs.position}
                            placeholder={"position"}
-                           onChange={e => setChanged(e.target.value, 'position')}/>
+                           onChange={handleInput}/>
                     <input type={"text"}
                            className={"text-search"}
                            placeholder={"year started"}
-                           onChange={e => setChanged(e.target.value, 'started')}/>
+                           name={"started"}
+                           value={inputs.started}
+                           onChange={handleInput}/>
                     <input type={"text"}
                            className={"text-search"}
                            placeholder={"year left"}
-                           onChange={e => setChanged(e.target.value, 'ended')}/>
+                           name={"ended"}
+                           value={inputs.ended}
+                           onChange={handleInput}/>
                 </div>
             </div>
         </center>

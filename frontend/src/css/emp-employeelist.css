@@ -57,3 +57,62 @@
 .view-employee-btn:hover {
     background-color: #252627;
 }
+
+
+.role-item {
+    display: flex;
+    justify-content: center;
+}
+
+.role-item .label {
+    color: #f68657;
+    margin-right: 1em;
+}
+
+
+.role-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-main);
+    padding: 0.1em;
+  }
+  
+  .role-header h3 {
+    display: flex;
+    align-items: center;
+    font-size: 2em;
+    cursor: pointer;
+  }
+  
+  
+  .roles-title,
+  .roles-count {
+    color: var(--color-main);
+    font-size: 24px;
+    font-weight: 600;
+  }
+  
+  .roles-count {
+    font-size: 18px;
+    color: var(--color-gray);
+  }
+  
+  
+  .roles-list {
+    padding: 0;
+    margin: 16px 0;
+    height: 70vh;
+    overflow-y: auto;
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  
+  .role-list-item {
+    max-width: 40%;
+    border-bottom: 2px solid  var(--color-border);
+    border-radius: 5px;
+    transition: all 0.2s ease-in-out;
+    justify-content: space-between;
+  }
+    

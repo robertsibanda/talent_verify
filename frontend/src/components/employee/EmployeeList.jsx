@@ -39,7 +39,7 @@ const EmployeeList = (props) => {
 
     const handleSearch = (props) => {
 
-        if (props.employeeName === "" || null || undefined) {
+        if (props.employee === "" || null || undefined) {
             getList()
                 .then(r => {
                     console.log('reloaded employee data')

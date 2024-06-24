@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import NavBar from "../misc/NavBar";
 import {useNavigate, useParams} from "react-router-dom";
+import EmployeeRoleList from "./EmployeeRoleList"
 import axios, {get} from "axios";
 
 const EmployeeDetail = () => {
@@ -33,7 +34,7 @@ const EmployeeDetail = () => {
             .then(_ => {
                 console.log('Downloaded employee details')
             })
-    }, [employee, getEmployeeDetail]);
+    }, []);
 
     return (
         <>
@@ -42,10 +43,16 @@ const EmployeeDetail = () => {
                 <center>
                     <h3>{employee.name}</h3>
                     <h3>Current Company : {employee.company}</h3>
-                    <h3>Current Department : {employee.name}</h3>
-                    <h3>Current Role : {employee.name}</h3>
+                    <h3>Current Department : {employee.department}</h3>
+                    <h3>Current Role : {employee.role}</h3>
                 </center>
             </div>
+
+           <center>
+           <div className='container-roles'>
+                <EmployeeRoleList />
+            </div>
+           </center>
 
         </>
     )
