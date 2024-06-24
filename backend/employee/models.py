@@ -6,8 +6,6 @@ from company.models import Company
 class Employee(models.Model):
     name = models.CharField(max_length=255)
     employee_id = models.CharField(max_length=100, unique=True, null=True, blank=True)
-    phone = models.CharField(max_length=255, null=True, blank=True)
-    email = models.EmailField(max_length=255, null=True, blank=True)
 
     @property
     def role(self):
@@ -33,3 +31,11 @@ class EmployeeRole(models.Model):
     duties = models.TextField()
     start_date = models.DateField()
     end_date = models.DateField(null=True, blank=True)
+
+    @property
+    def get_department(self):
+        return Department.objects.get(id=self.department.id).name
+    
+    @property
+    def company(self):
+        return Company.objects.get(department=self.department).name

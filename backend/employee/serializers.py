@@ -10,8 +10,6 @@ class EmployeeSerializer(serializers.ModelSerializer):
             'id',
             'name',
             'employee_id',
-            'email',
-            'phone',
             'role',
             'department',
             'company'
@@ -21,4 +19,13 @@ class EmployeeSerializer(serializers.ModelSerializer):
 class EmployeeRoleSerializer(serializers.ModelSerializer):
     class Meta:
         model = EmployeeRole
-        fields = '__all__'
+        fields = [
+            'get_department',
+            'role',
+            'duties',
+            'start_date',
+            'end_date',
+            'company'
+        ]
+
+
