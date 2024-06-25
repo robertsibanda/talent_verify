@@ -52,41 +52,23 @@ const EmployeeList = (props) => {
 
 
             employees.forEach(emp => {
+                let allPropsMatch = true;
+                
                 requiredProps.forEach(prop => {
-                    if (emp[prop] !== undefined || null) {
-                        if (emp[prop].includes(props[prop])) {
-                            console.log(`Props emp[prop]: ${emp.name}  -> ${emp[prop]} == ${props[prop]}`)
-                            if (found.indexOf(emp) === -1) {
-                                console.log(`Adding ${emp.name} for ${prop}`)
-                                found.push(emp)
-                            }
-                        }
-                        
+                    if (emp[prop] === undefined || emp[prop] === null 
+                        || props[prop] === undefined || props[prop] === null 
+                        || !emp[prop].includes(props[prop])) {
+                        allPropsMatch = false;
                     }
-                })
-            })
-
-            employees.forEach(emp => {
-                requiredProps.forEach(prop => {
-                    if (emp[prop] !== undefined || null) {
-                        if (!emp[prop].includes(props[prop])) {
-                            console.log(`Removing ${emp.name} for ${prop}`)
-                            found.filter(em => {
-                                if (em !== emp) {
-                                    return em
-                                }
-                                console.log('Found : ', found)
-
-                                return null
-                            })
-                            console.log(found, employees)
-                        }
-                        
+                });
+                
+                if (allPropsMatch) {
+                    if (found.indexOf(emp) === -1) {
+                        found.push(emp);
                     }
-                })
-            })
-
-            
+                }
+            });
+           
             setEmployees(found)
 
 

@@ -11,8 +11,15 @@ class CompanySerializer(serializers.ModelSerializer):
         fields =[
             'id',
             'name',
+            'registration_date',
+            'registration_number',
+            'contact_person',
+            'address',
+            'number_of_employees',
             'department_count',
-            'employee_count'
+            'employee_count',
+            'email',
+            'phone'
         ]
 
     def get_employee_count(self, obj):

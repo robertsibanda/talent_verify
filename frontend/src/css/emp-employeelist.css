@@ -103,7 +103,26 @@
   border: 2px #f68657 solid;
   margin: 0.5em;
   border-radius: 10px;
-  min-width: 17em;
+  min-width: 25em;
   max-width: 35em;
   }
     
+
+
+  @media (max-width: 541px) {
+    .search-header h3 {
+        visibility: hidden;
+    }
+
+    .search-header h3 img {
+        visibility: visible;
+    }
+          
+    .role-list-item {
+    
+        max-width: 15em;
+        min-width: 10em;
+        }
+      
+}
+
