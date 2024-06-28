@@ -18,9 +18,10 @@ urlpatterns = [
 
     # company views
     path('company/', c_views.company_list_create),
-    path('company/<int:pk>', c_views.company_detail_view),
+    path('company/<int:pk>/', c_views.company_detail_view),
+    path('company/<int:pk>/update/', c_views.company_update_view),
 
     # department views
     path('department/', c_views.department_list_create),
-    path('department/<int:pk>', c_views.department_detail_view),
+    path('department/<int:pk>/', c_views.department_detail_view),
 ]
