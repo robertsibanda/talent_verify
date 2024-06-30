@@ -134,45 +134,41 @@ const Home = (props) =>  {
                 result.data.forEach(item => {
                     // handle comapny data first upload
 
-                    companies.forEach(comp => {
+                companies.forEach(async comp => {
 
-                        let compReg = comp.registration_number
-                        let newReg = item['registration number']
+                    let compReg = comp.registration_number
+                    let newReg = item['registration number']
 
-                        if ((comp.name === item['Company']) && (compReg === newReg) ) {
+                    if ((comp.name === item['Company']) && (compReg === newReg) ) {
 
-                            console.log('same company name')
-                            
-                            console.log('same reg number')
-                            // check need for update company data
-                            let similar = compareValuesSimilarity(comp, item, company_colums)
-                            console.log('Company already exists : ', comp, item)
-                            console.log('Similar with reason : ', similar)
-                            if (!similar[0]) {
-                                // update comapny data
-                                console.log('they are not the same')
+                        // check need for update company data
+                        let similar = compareValuesSimilarity(comp, item, company_colums)
+                        if (!similar[0]) {
+                            // update comapny data
+                            console.log('they are not the same')
 
-                                let newCompData = similar[1]
+                            let newCompData = similar[1]
 
-                                let updateREsponse = updateComapnyData(newCompData)
-                                if (!updateREsponse.success) {
-                                    alert('Faced errors while updating company data')
-                                }
-                                
-                            }
-                            else {
-                                console.log('they are the same')
+                            let updateResponse = updateComapnyData(newCompData)
+                            if (!updateResponse.success) {
+                                alert('Faced errors while updating company data')
+                                console.log(updateResponse)
                             }
                             
                         }
                         else {
-                            console.log('New company : ', item)
+                            console.log('they are the same')
                         }
-                    })
+                        
+                    }
+                    else {
+                        console.log('New company : ', item)
+                    }
+                })
 
-                    employees.forEach(emp => {
-
-                    })
+                employees.forEach(emp => {
+                    // upload emloyee data
+                })
 
                     //TODO upload employee data
 

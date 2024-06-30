@@ -20,13 +20,11 @@ def company_update_view(request, *args, **kwargs):
 
     print('company_data : : ', updateData)
 
-    print('Serializer is valid')
     for k, v in updateData.items():
         setattr(instanace, k , v)
         instanace.save(force_update=True)
 
     return Response({ 'success' : 'updated company'})
-    return Response({'error':'did not update successfully'})
 
 
 
